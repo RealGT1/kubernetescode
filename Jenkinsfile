@@ -56,6 +56,7 @@ pipeline {
                 script {
                     docker.withRegistry(DOCKER_REGISTRY, DOCKERHUB_CREDENTIALS) {
                         docker.image("${CLIENT_IMAGE}:latest").push("${env.BUILD_NUMBER}")
+                        docker.image("${CLIENT_IMAGE}:latest").push('latest')
                     }
                 }
             }
@@ -66,6 +67,7 @@ pipeline {
                 script {
                     docker.withRegistry(DOCKER_REGISTRY, DOCKERHUB_CREDENTIALS) {
                         docker.image("${SERVER_IMAGE}:latest").push("${env.BUILD_NUMBER}")
+                        docker.image("${SERVER_IMAGE}:latest").push('latest')
                     }
                 }
             }
